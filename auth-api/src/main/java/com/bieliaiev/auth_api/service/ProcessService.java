@@ -19,7 +19,7 @@ import com.bieliaiev.auth_api.repository.UserRepository;
 @Service
 public class ProcessService {
 	
-	@Value("${INTERNAL_TOKEN}")
+	@Value("${internal.token}")
     private String internalToken;
 	private final ProcessingLogRepository repository;
 	private final UserRepository userRepository;

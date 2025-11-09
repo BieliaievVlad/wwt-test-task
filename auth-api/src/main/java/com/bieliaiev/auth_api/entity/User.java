@@ -1,4 +1,4 @@
-package com.bieliaiev.auth_api.entity;
+	package com.bieliaiev.auth_api.entity;
 
 import java.util.UUID;
 

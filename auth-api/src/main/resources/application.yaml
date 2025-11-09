@@ -9,6 +9,18 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: "https://${auth0.domain}/"
+  datasource:
+    url: ${POSTGRES_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
 
 auth0:
   audience: "https://wwt-test-task-api.example.com"
@@ -16,3 +28,6 @@ auth0:
 
 jwt:
   secret: ${JWT_SECRET}
+
+internal:
+  token: ${INTERNAL_TOKEN}

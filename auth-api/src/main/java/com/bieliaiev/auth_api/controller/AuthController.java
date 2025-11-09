@@ -1,5 +1,6 @@
 package com.bieliaiev.auth_api.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,14 +24,13 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
         service.register(request.email(), request.password());
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         String token = service.login(request.email(), request.password());
-        return ResponseEntity.ok().body(
-                java.util.Map.of("token", token)
+        return ResponseEntity.ok().body(java.util.Map.of("token", token)
         );
     }
 }
