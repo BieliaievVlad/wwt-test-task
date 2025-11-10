@@ -1,3 +1,33 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: auth-api
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "https://${auth0.domain}/"
+  datasource:
+    url: ${POSTGRES_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+
+auth0:
+  audience: "https://wwt-test-task-api.example.com"
+  domain: "dev-crfs6orqktz444bw.eu.auth0.com" 
+
+jwt:
+  secret: ${JWT_SECRET}
+
+internal:
+  token: ${INTERNAL_TOKEN}
